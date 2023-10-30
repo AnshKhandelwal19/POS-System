@@ -13,21 +13,12 @@ Ingredient::Ingredient(std::string n, std::string t, int c) {
     setCount(c);
 }
 
-//Getters and Setters
-void Ingredient::setCount(int c) {
-    if(c < -1) {
-        throw std::invalid_argument("INVALID COUNT");
-    }
-    else if(c == 0) {
-        isAvailable = false;
-        count = 0;
-    }
-    else {
-        isAvailable = true;
-        count = c;
-    }
-}
-
-
 //Class Functions
-void decrementCount();
+void Ingredient::decrementCount() {
+    
+    if(count <= 0)
+        throw std::invalid_argument("DECREMENT NOT ALLOWED");
+
+    else
+        setCount(count--);
+}
